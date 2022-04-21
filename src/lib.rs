@@ -43,14 +43,13 @@ pub fn get_args() -> MyResult<Config> {
         .get_matches();
 
     let lines = matches
-        .values_of("lines")
+        .value_of("lines")
         .map(parse_positive_int)
         .transpose()
         .map_err(|e| format!("illegal bytes count -- {}", e))?;
 
-
     let bytes = matches
-        .values_of("bytes")
+        .value_of("bytes")
         .map(parse_positive_int)
         .transpose()
         .map_err(|e| format!("illegal bytes count -- {}", e))?;
